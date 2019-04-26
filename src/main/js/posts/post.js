@@ -9,6 +9,9 @@ const Post = (props) => {
 			<div className='post-title'>
                 {props.post.title}
             </div>
+            <div className='post-title'>
+                {props.post.timestamp}
+            </div>
 		</div>
 	)
 }
