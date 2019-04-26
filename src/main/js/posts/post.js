@@ -6,6 +6,9 @@ const Post = (props) => {
 			<div className='post-content'>
 				{props.post.content}
 			</div>
+			<div className='post-title'>
+                {props.post.title}
+            </div>
 		</div>
 	)
 }
