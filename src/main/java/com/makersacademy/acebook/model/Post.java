@@ -27,12 +27,14 @@ public class Post {
     public String timestamp;
 
     private Post() {
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-        LocalDateTime now = LocalDateTime.now();
-        this.timestamp = dtf.format(now);
+
     }
 
     public Post(String content, String title) {
+
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();
+        this.timestamp = dtf.format(now);
 
         this.content = content;
         this.title = title;
