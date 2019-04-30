@@ -1,6 +1,8 @@
 package com.makersacademy.acebook.controller;
 
 
+import com.makersacademy.acebook.model.Post;
+import com.makersacademy.acebook.model.PostForm;
 import com.makersacademy.acebook.repository.PostRepository;
 import com.makersacademy.acebook.repository.UserRepository;
 import com.makersacademy.acebook.service.UserService;
@@ -9,17 +11,23 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.makersacademy.acebook.model.User;
+import org.springframework.web.servlet.view.RedirectView;
 
 import javax.validation.Valid;
 
 @Controller
 public class AuthenticationController {
+
+    private final PostRepository postRepository;
+
+    @Autowired
+	public AuthenticationController(PostRepository postRepository) {
+		this.postRepository = postRepository;
+	}
 
     @Autowired
     UserService userService;
@@ -57,15 +65,23 @@ public class AuthenticationController {
         return modelAndView;
     }
 
-//    @RequestMapping(value = "/", method = RequestMethod.GET)
-//    public ModelAndView index() {
-//        ModelAndView modelAndView = new ModelAndView();
-//        modelAndView.setViewName("index"); // resources/template/index.html
-//        return modelAndView;
-//    }
-
-    @RequestMapping(value = "/")
-    public String index() {
-        return "index";
+    @RequestMapping(value = "/home", method = RequestMethod.GET)
+    public ModelAndView index() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("index"); // resources/template/home.html
+        return modelAndView;
     }
+
+    @GetMapping(value = "/post")
+	public String post(Model model) {
+		model.addAttribute("post", new PostForm("Write post here.."));
+		return "post";
+	}
+
+	@PostMapping(value = "/post")
+	public RedirectView post(@ModelAttribute Post post) {
+		postRepository.save(post);
+		return new RedirectView("/home");
+	}
+
 }

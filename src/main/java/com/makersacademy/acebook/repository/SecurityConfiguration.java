@@ -27,13 +27,15 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Value("${spring.queries.users-query}")
     private String usersQuery;
 
-//    @Value("${spring.queries.roles-query}")
-//    private String rolesQuery;
-
     @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.jdbcAuthentication().usersByUsernameQuery(usersQuery)
-                .dataSource(dataSource).passwordEncoder(bCryptPasswordEncoder);
+    public void configure(AuthenticationManagerBuilder authenticationManagerBuilder)
+            throws Exception {
+
+        authenticationManagerBuilder.jdbcAuthentication().dataSource(dataSource)
+                .usersByUsernameQuery(
+                        "SELECT email, password, auth_user_id FROM auth_user WHERE email=?")
+                .authoritiesByUsernameQuery(
+                        "SELECT email, password, auth_user_id FROM auth_user WHERE email=?");
     }
 
     @Override

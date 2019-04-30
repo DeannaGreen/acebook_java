@@ -28,7 +28,7 @@ public class User {
 //    private String status;
 
     @Column(name = "auth_user_id")
-    private Long auth_user_id;
+    private int id;
 
     @Column(name = "first_name")
     private String first_name;
@@ -49,12 +49,12 @@ public class User {
 //    @JoinTable(name = "auth_user_role", joinColumns = @JoinColumn(name = "auth_user_id"), inverseJoinColumns = @JoinColumn(name = "auth_role_id"))
 //    private Set<Role> roles;
 
-    public Long getId() {
-        return auth_user_id;
+    public int getId() {
+        return id;
     }
 
-    public void setId(Long auth_user_id) {
-        this.auth_user_id = auth_user_id;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
