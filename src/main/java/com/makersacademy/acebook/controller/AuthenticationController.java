@@ -32,6 +32,11 @@ public class AuthenticationController {
     @Autowired
     UserService userService;
 
+    @RequestMapping(value = "/")
+	public String index() {
+		return "login";
+	}
+
     @RequestMapping(value = { "/login" }, method = RequestMethod.GET)
     public ModelAndView login() {
         ModelAndView modelAndView = new ModelAndView();
@@ -66,9 +71,9 @@ public class AuthenticationController {
     }
 
     @RequestMapping(value = "/home", method = RequestMethod.GET)
-    public ModelAndView index() {
+    public ModelAndView home() {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("index"); // resources/template/home.html
+        modelAndView.setViewName("home"); // resources/template/home.html
         return modelAndView;
     }
 

@@ -1,10 +1,23 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <meta charset="ISO-8859-1">
-    <title>WebEncyclop</title>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <meta charset="UTF-8"/>
+    <title>Acebook</title>
+    <link rel="stylesheet" href="/main.css" />
 </head>
 <body>
-Hello user
+
+<button onclick="myFunction()">New Post</button>
+
+<script>
+    function myFunction() {
+        location.replace("/post")
+    }
+    </script>
+
+<div id="app"></div>
+
+<script src="built/bundle.js"></script>
+
 </body>
 </html>
