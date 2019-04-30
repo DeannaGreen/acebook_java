@@ -12,33 +12,33 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
-@Controller
-public class HomeController {
-
-	private final PostRepository postRepository;
-
-
-	@Autowired
-	public HomeController(PostRepository postRepository) {
-		this.postRepository = postRepository;
-	}
-
-	@RequestMapping(value = "/")
-	public String index() {
-		return "index";
-	}
-
-	@GetMapping(value = "/post")
-	public String post(Model model) {
-		model.addAttribute("post", new PostForm("Write post here.."));
-		return "post";
-	}
-
-	@PostMapping(value = "/post")
-	public RedirectView post(@ModelAttribute Post post) {
-		postRepository.save(post);
-		return new RedirectView("/");
-	}
-
-}
+//@Controller
+//public class HomeController {
+//
+//	private final PostRepository postRepository;
+//
+//
+//	@Autowired
+//	public HomeController(PostRepository postRepository) {
+//		this.postRepository = postRepository;
+//	}
+//
+//	@RequestMapping(value = "/")
+//	public String index() {
+//		return "index";
+//	}
+//
+//	@GetMapping(value = "/post")
+//	public String post(Model model) {
+//		model.addAttribute("post", new PostForm("Write post here.."));
+//		return "post";
+//	}
+//
+//	@PostMapping(value = "/post")
+//	public RedirectView post(@ModelAttribute Post post) {
+//		postRepository.save(post);
+//		return new RedirectView("/");
+//	}
+//
+//}
 

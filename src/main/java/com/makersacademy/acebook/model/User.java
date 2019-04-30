@@ -20,11 +20,29 @@ public class User {
 
     @Id
     @GeneratedValue(strategy=SEQUENCE, generator="auth_user_auth_user_id_seq")
+//    private Long auth_user_id;
+//    private String first_name;
+//    private String last_name;
+//    private String email;
+//    private String password;
+//    private String status;
+
+    @Column(name = "auth_user_id")
     private Long auth_user_id;
+
+    @Column(name = "first_name")
     private String first_name;
+
+    @Column(name = "last_name")
     private String last_name;
+
+    @Column(name = "email")
     private String email;
+
+    @Column(name = "password")
     private String password;
+
+    @Column(name = "status")
     private String status;
 
 //    @ManyToMany(cascade = CascadeType.ALL)
@@ -42,16 +60,16 @@ public class User {
     public String getName() {
         return first_name;
     }
-    public void setName(String first_name) {
-        this.first_name = first_name;
+    public void setName(String name) {
+        this.first_name = name;
     }
 
     public String getLastName() {
         return last_name;
     }
 
-    public void setLastName(String last_name) {
-        this.last_name = last_name;
+    public void setLastName(String lastName) {
+        this.last_name = lastName;
     }
 
     public String getEmail() {
