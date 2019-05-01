@@ -1,8 +1,9 @@
 package com.makersacademy.acebook.controller;
 
 
+import com.makersacademy.acebook.model.*;
 import com.makersacademy.acebook.model.Post;
-import com.makersacademy.acebook.model.PostForm;
+import com.makersacademy.acebook.repository.CommentRepository;
 import com.makersacademy.acebook.repository.PostRepository;
 import com.makersacademy.acebook.repository.UserRepository;
 import com.makersacademy.acebook.service.UserService;
@@ -17,21 +18,23 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.makersacademy.acebook.model.User;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 @Controller
 public class AuthenticationController {
 
     private final PostRepository postRepository;
+    private final CommentRepository commentRepository;
 
     @Autowired
-	public AuthenticationController(PostRepository postRepository) {
+	public AuthenticationController(PostRepository postRepository, CommentRepository commentRepository) {
 		this.postRepository = postRepository;
+        this.commentRepository = commentRepository;
 	}
 
     @Autowired
@@ -94,4 +97,20 @@ public class AuthenticationController {
 		return new RedirectView("/home");
 	}
 
+    @GetMapping(value = "/post/{post_id}/comment")
+    public ModelAndView comment(Model model, HttpServletRequest request, @PathVariable Long post_id) {
+        HttpSession session = request.getSession();
+        System.out.println(post_id);
+        model.addAttribute("comment", new CommentForm("Content", post_id));
+        System.out.println(post_id);
+        // System.out.println(session.getAttribute("current user"));
+        return new ModelAndView("comment");
+    }
+
+    @PostMapping(value = "/comment")
+    public RedirectView comment(@ModelAttribute Comment comment) {
+        System.out.println(comment);
+        commentRepository.save(comment);
+        return new RedirectView("/home");
+    }
 }

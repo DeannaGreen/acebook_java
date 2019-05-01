@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Comment</title>
+</head>
+<body>
+<h1>Comment</h1>
+<form action="#" th:action="@{/comment}" th:object="${comment}" method="post">
+    <p>Content: <textarea type="text" th:field="*{content}" /></p>
+    <p><textarea type="text" th:field="*{post_id}" style="display:none;"/></p>
+    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+</form>
+</body>
+</html>
