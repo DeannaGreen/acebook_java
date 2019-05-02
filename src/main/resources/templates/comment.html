@@ -4,6 +4,18 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Add Comment</title>
+    <style>
+        .container {margin-left: 50px;}
+        textarea {
+        width: 40%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        resize: vertical;
+        height:200px
+        }
+    </style>
 </head>
 <body>
 
@@ -17,14 +29,19 @@
 
 <br>
 
-<h1>Comment</h1>
-<form action="#" th:action="@{/comment}" th:object="${comment}" method="post">
-    <p>Content: <textarea type="text" th:field="*{content}" /></p>
-    <p><textarea type="text" th:field="*{post_id}" style="display:none;"/></p>
-    <p>
-        <button type="submit" value="Submit" class="btn btn-primary">Submit</button>
-        <button type="reset" class="btn btn-primary">Reset</button></p>
-</form>
+<div class="container">
+    <h1>Comment</h1>
+    <p></p>
+    <form action="#" th:action="@{/comment}" th:object="${comment}" method="post">
+        <textarea type="text" th:field="*{content}" placeholder="Write a post..." />
+        <p><textarea type="text" th:field="*{post_id}" style="display:none;"/></p>
+        <br>
+        <p>
+            <button type="submit" value="Submit" class="btn btn-primary">Submit</button>
+            <button type="reset" class="btn btn-primary">Reset</button>
+        </p>
+    </form>
+</div>
 
 <script type="text/javascript">
     document.getElementById("myButton").onclick = function () {

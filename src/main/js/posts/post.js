@@ -24,25 +24,23 @@ class Post extends React.Component {
 render () {
 	return (
 
-		<div className='post-main'>
-			<div className='post-content'>
-				{this.props.post.content.split("\n").map((i,key) => {
-                                               return <div key={key}>{i}</div>;
-                                           })}
-			</div>
-			<div className='post-time'>
+     	<div className='post-main'>
+            <div className='post-content'>
+                {this.props.post.content.split("\n").map((i,key) => {return <div key={key}>{i}</div>;})}
+            </div>
+            <div className='post-time'>
                 {this.props.post.timestamp}
             </div>
             <p></p>
-             <h5>Comments</h5>
+            <h5>Comments</h5>
             <div className='comments-item'>
-              				{this.getComments()}
-              			</div>
+                {this.getComments()}
+            </div>
             <a href={"post/"+this.id+"/comment"}>Comment</a>
 
             <Likes />
-		</div>
-	)
+        </div>
+	  )
     }
 
      getComments() {
