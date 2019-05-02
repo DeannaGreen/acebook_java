@@ -43,7 +43,7 @@ render () {
               			</div>
             <a href={"post/"+this.id+"/comment"}>Comment</a>
 
-            <Counter />
+            <Likes />
 		</div>
 	)
     }
@@ -56,25 +56,49 @@ render () {
       }
 }
 
-class Counter extends React.Component {
+class Likes extends React.Component {
 
-  constructor(props) {
-      super(props);
+  constructor(props){
 
-      this.state = {
-        likes: 0
-      };
+    super(props);
+    this.state = {
+      likes: 0,
+      updated: false
+    };
 
-      this.Likes= this.Likes.bind(this);
+    this.Likes= this.updateLikes.bind(this);
+
+  }
+
+  updateLikes() {
+
+    if(!this.state.updated) {
+      this.setState((prevState, props) => {
+        return {
+          likes: prevState.likes + 1,
+          updated: true
+        };
+      });
+
+    } else {
+
+      this.setState((prevState, props) => {
+        return {
+          likes: prevState.likes - 1,
+          updated: false
+        };
+      });
+
     }
+  }
 
- Likes() {
-    console.log(this.state.likes);
-        return this.setState(state => ({likes: state.likes + 1}));
- }
+  render(){
 
-  render() {
-    return <button onClick={this.Likes}>Likes {this.state.likes}</button>
+    return(
+      <div>
+        <button onClick={this.Likes}>Like: {this.state.likes}</button>
+      </div>
+    );
   }
 }
 
