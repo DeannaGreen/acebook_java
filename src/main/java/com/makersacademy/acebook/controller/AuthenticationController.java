@@ -100,16 +100,12 @@ public class AuthenticationController {
     @GetMapping(value = "/post/{post_id}/comment")
     public ModelAndView comment(Model model, HttpServletRequest request, @PathVariable Long post_id) {
         HttpSession session = request.getSession();
-        System.out.println(post_id);
         model.addAttribute("comment", new CommentForm("Content", post_id));
-        System.out.println(post_id);
-        // System.out.println(session.getAttribute("current user"));
         return new ModelAndView("comment");
     }
 
     @PostMapping(value = "/comment")
     public RedirectView comment(@ModelAttribute Comment comment) {
-        System.out.println(comment);
         commentRepository.save(comment);
         return new RedirectView("/home");
     }

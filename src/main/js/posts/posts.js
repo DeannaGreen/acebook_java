@@ -2,6 +2,7 @@ import React from 'react';
 import Post from './post'
 
 class Posts extends React.Component {
+
   constructor(props) {
     super(props);
     this.getPosts = this.getPosts.bind(this);

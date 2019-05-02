@@ -4,10 +4,20 @@
     <meta charset="UTF-8"/>
     <title>Acebook</title>
     <link rel="stylesheet" href="/main.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
 
-<button id="myButton" class="float-left submit-button" >Log Out</button>
+<nav class="navbar navbar-dark bg-primary">
+    <a class="navbar-brand" href="#">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Spades.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+        Acebook
+    </a>
+    <button onclick="myFunction()" class="btn btn-outline-light">New Post</button>
+    <button id="myButton" class="float-left submit-button btn btn-outline-light" >Log Out</button>
+</nav>
+
+<br>
 
 <script type="text/javascript">
     document.getElementById("myButton").onclick = function () {
@@ -15,18 +25,20 @@
     };
 </script>
 
-
-<button onclick="myFunction()">New Post</button>
-
 <script>
     function myFunction() {
         location.replace("/post")
     }
-    </script>
+</script>
 
 <div id="app"></div>
 
 <script src="built/bundle.js"></script>
+
+<!--&lt;!&ndash; LikeBtn.com BEGIN &ndash;&gt;-->
+<!--<span class="likebtn-wrapper" data-identifier="item_1" data-site_id="5ccaa6a3fa8fdfef203ef245"></span>-->
+<!--<script>(function(d,e,s){if(d.getElementById("likebtn_wjs"))return;a=d.createElement(e);m=d.getElementsByTagName(e)[0];a.async=1;a.id="likebtn_wjs";a.src=s;m.parentNode.insertBefore(a, m)})(document,"script","//w.likebtn.com/js/w/widget.js");</script>-->
+<!--&lt;!&ndash; LikeBtn.com END &ndash;&gt;-->
 
 </body>
 </html>

@@ -11,6 +11,7 @@ const Comment = (props) => {
 			<div className='comment-time'>
                 {props.comment.timestamp}
             </div>
+            <p></p>
 		</div>
 	)
 }
