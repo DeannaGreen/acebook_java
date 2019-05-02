@@ -41,4 +41,7 @@ public class Post {
 
     }
 
+    public Object getContent() {
+        return content;
+    }
 }

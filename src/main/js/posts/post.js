@@ -21,10 +21,6 @@ class Post extends React.Component {
     });
   }
 
-  incrementMe() {
-    console.log("Like")
-  }
-
 render () {
 	return (
 
