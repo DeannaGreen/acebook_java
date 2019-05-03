@@ -7,7 +7,8 @@ class Likes extends React.Component {
     super(props);
     this.state = {
       likes: this.props.likes,
-      updated: false
+      updated: false,
+      btn_class: "btn btn-light"
     };
 
     this.Likes= this.updateLikes.bind(this);
@@ -20,16 +21,19 @@ class Likes extends React.Component {
       this.setState((prevState, props) => {
         return {
           likes: prevState.likes + 1,
-          updated: true
+          updated: true,
+          btn_class: "btn btn-primary"
         };
       });
+      changeColor();
 
     } else {
 
       this.setState((prevState, props) => {
         return {
           likes: prevState.likes - 1,
-          updated: false
+          updated: false,
+          btn_class: "btn btn-light"
         };
       });
 
@@ -40,7 +44,7 @@ class Likes extends React.Component {
 
     return(
       <div>
-        <button onClick={this.Likes}>Like: {this.state.likes}</button>
+        <button onClick={this.Likes} className={this.state.btn_class}>Likes: {this.state.likes}</button>
       </div>
     );
   }
