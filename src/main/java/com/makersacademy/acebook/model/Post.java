@@ -5,13 +5,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.GenerationType;
+import java.util.Random;
 
 import lombok.Data;
 
-import java.security.Timestamp;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 
 
 @Data
@@ -25,6 +24,7 @@ public class Post {
     private String content;
     private String title;
     public String timestamp;
+    public int likes;
 
     private Post() {
 
@@ -39,6 +39,8 @@ public class Post {
         this.content = content;
         this.title = title;
 
+        Random rand = new Random();
+        this.likes = rand.nextInt(10);
     }
 
     public Object getContent() {

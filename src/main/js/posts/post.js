@@ -4,7 +4,6 @@ import Likes from './like';
 const client = require('../client');
 
 class Post extends React.Component {
-//const id = this.props.post._links.self.href.split("/")[this.props.post._links.self.href.split("/").length-1];
   constructor(props) {
     super(props)
     this.state = {
@@ -37,8 +36,8 @@ render () {
                 {this.getComments()}
             </div>
             <a href={"post/"+this.id+"/comment"}>Comment</a>
-
-            <Likes />
+            <br />
+            <Likes likes={this.props.post.likes}/>
         </div>
 	  )
     }

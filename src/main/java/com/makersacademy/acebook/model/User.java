@@ -1,14 +1,9 @@
 package com.makersacademy.acebook.model;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import static javax.persistence.GenerationType.SEQUENCE;
@@ -20,15 +15,9 @@ public class User {
 
     @Id
     @GeneratedValue(strategy=SEQUENCE, generator="auth_user_auth_user_id_seq")
-//    private Long auth_user_id;
-//    private String first_name;
-//    private String last_name;
-//    private String email;
-//    private String password;
-//    private String status;
 
     @Column(name = "auth_user_id")
-    private int id;
+    private Long id;
 
     @Column(name = "first_name")
     private String first_name;
@@ -45,15 +34,11 @@ public class User {
     @Column(name = "status")
     private String status;
 
-//    @ManyToMany(cascade = CascadeType.ALL)
-//    @JoinTable(name = "auth_user_role", joinColumns = @JoinColumn(name = "auth_user_id"), inverseJoinColumns = @JoinColumn(name = "auth_role_id"))
-//    private Set<Role> roles;
-
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

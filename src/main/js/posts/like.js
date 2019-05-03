@@ -6,7 +6,7 @@ class Likes extends React.Component {
 
     super(props);
     this.state = {
-      likes: 0,
+      likes: this.props.likes,
       updated: false
     };
 
