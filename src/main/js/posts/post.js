@@ -24,20 +24,22 @@ render () {
 	return (
 
      	<div className='post-main'>
-            <div className='post-content'>
-                {this.props.post.content.split("\n").map((i,key) => {return <div key={key}>{i}</div>;})}
+     	    <div className='post'>
+                <div className='post-content'>
+                    {this.props.post.content.split("\n").map((i,key) => {return <div key={key}>{i}</div>;})}
+                </div>
+                <div className='post-time'>
+                    {this.props.post.timestamp}
+                </div>
+                <p></p>
+                <h5>Comments</h5>
+                <div className='comments-item'>
+                    {this.getComments()}
+                </div>
+                <a href={"post/"+this.id+"/comment"} class="btn btn-primary">Comment</a>
+                <p></p>
+                <Likes likes={this.props.post.likes}/>
             </div>
-            <div className='post-time'>
-                {this.props.post.timestamp}
-            </div>
-            <p></p>
-            <h5>Comments</h5>
-            <div className='comments-item'>
-                {this.getComments()}
-            </div>
-            <a href={"post/"+this.id+"/comment"}>Comment</a>
-            <br />
-            <Likes likes={this.props.post.likes}/>
         </div>
 	  )
     }
